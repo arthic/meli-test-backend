@@ -37,7 +37,7 @@ const searchItem = async (req, res) => {
 }
 
 const searchResults = async (req, res) => {
-    const {q} = req.query
+    const {q} = req.query 
     const {dataResults} = await getMeliSearch(q)
     const {available_filters, results: rMeli} = dataResults
 
