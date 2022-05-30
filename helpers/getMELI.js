@@ -3,9 +3,8 @@ const axios = require("axios");
 const getMeliSearch= async (category) => {
     try {
         let search = encodeURI(category)
-        console.log(search);
         const searchClean = search.slice(9, search.length);
-        console.log(searchClean);
+
         const instance = axios.create({
             baseURL: `https://api.mercadolibre.com/sites/MLA/search?`,
             params: {
