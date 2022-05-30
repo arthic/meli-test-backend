@@ -5,7 +5,7 @@ const searchItem = async (req, res) => {
     const {dataItem} = await getItem(idParam)
     const {dataDescription} = await getItemDescription(idParam)
 
-    const {id, title, currency_id, price, shipping, condition, sold_quantity, pictures
+    const {id, title, currency_id, price, shipping, condition, sold_quantity, pictures, permalink
     } = dataItem
 
     const {plain_text} = dataDescription
@@ -33,11 +33,12 @@ const searchItem = async (req, res) => {
         free_shipping: shipping.free_shipping,
         sold_quantity,
         description: plain_text,
+        buy_link: permalink
     })
 }
 
 const searchResults = async (req, res) => {
-    const {q} = req.query 
+    const {q} = req.query
     const {dataResults} = await getMeliSearch(q)
     const {available_filters, results: rMeli} = dataResults
 
