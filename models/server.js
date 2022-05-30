@@ -1,10 +1,25 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 class Server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT
+        this.app.get('/items', function(req, res) {
+            res.sendFile(path.join(__dirname, '..', 'public/index.html'), function(err) {
+                if (err) {
+                    res.status(500).send(err)
+                }
+            })
+        })
+        this.app.get('/items/*', function(req, res) {
+            res.sendFile(path.join(__dirname, '..', 'public/index.html'), function(err) {
+                if (err) {
+                    res.status(500).send(err)
+                }
+            })
+        })
 
         // PATHS
         this.paths = {
